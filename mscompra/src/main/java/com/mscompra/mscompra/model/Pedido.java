@@ -9,6 +9,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.validation.constraints.*;
 import java.math.BigDecimal;
 import java.util.Date;
 
@@ -23,11 +24,27 @@ public class Pedido {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @NotBlank(message = "Campo requerido")
+    @Size(min = 5, max = 80, message = "nome deve ter entre 5 a 80 carateres")
     private String nome;
+
+    @NotNull(message = "Campo requerido")
     private Long produto;
+
+    @NotNull
+    @Min(1)
+    @Positive(message = "valor deve ser positivo")
     private BigDecimal valor;
+
+    @NotNull
+    @PastOrPresent(message = "A data do não deve ser data futuro")
     @JsonFormat(pattern = "yyyy-mm-dd")
     private Date dataCompra;
+
+    @NotBlank(message = "Campo requerido")
     private String cpfCliente;
+
+    @NotBlank(message = "Campo requerido")
     private String cep;
 }

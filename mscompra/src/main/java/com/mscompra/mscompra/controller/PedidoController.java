@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.validation.Valid;
+
 @RequiredArgsConstructor(onConstructor = @__(@Autowired))
 @RestController
 @RequestMapping("/pedido")
@@ -19,7 +21,7 @@ public class PedidoController {
 
     // as acao de pedido-
     @PostMapping
-    public ResponseEntity<Pedido> salvar(@RequestBody Pedido pedido) {
+    public ResponseEntity<Pedido> salvar(@RequestBody @Valid Pedido pedido) {
         return ResponseEntity.ok(pedidoService.salvar(pedido));
     }
  }
