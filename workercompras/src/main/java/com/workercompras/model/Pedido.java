@@ -17,8 +17,7 @@ import java.util.Date;
 @JsonNaming(PropertyNamingStrategies.SnakeCaseStrategy.class)
 @ToString
 public class Pedido implements Serializable {
-    private static final long serialVersionUID = 1L;
-
+    //private static final long serialVersionUID = 1L;
     private Long id;
     private String nome;
     private Long produto;

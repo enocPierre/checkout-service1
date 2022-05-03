@@ -4,6 +4,7 @@ package com.workercompras.consumer;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.workercompras.model.Pedido;
 import lombok.RequiredArgsConstructor;
+import org.jetbrains.annotations.NotNull;
 import org.springframework.amqp.core.Message;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,8 +20,8 @@ public class Consumer {
     private final ObjectMapper mapper;
 
     @RabbitListener(queues = {"${queue.name}"})
-    public void consumer(@Payload Message message) throws IOException {
+    public void consumer(@Payload @NotNull Message message) throws IOException {
         var pedido = mapper.readValue(message.getBody(), Pedido.class);
-        System.out.println("Messagem recebid: " + pedido);
+        System.out.println("Mensagem recebid no WorkerCompras: " + pedido);
     }
 }
