@@ -13,16 +13,15 @@ import org.springframework.context.annotation.Bean;
 @SpringBootApplication
 public class WorkercomprasApplication {
 
-	@Autowired
-	private CepService cepService;
+	//@Autowired
+	//private CepService cepService;
 
 	public static void main(String[] args) {
 		SpringApplication.run(WorkercomprasApplication.class, args);
 	}
 
-	@Bean
-	void teste() {
-		cepService.buscarCep("08595570");
-	}
-
+	//@Bean
+	//void teste() {
+		//cepService.buscarCep("08595570");
+	//}
 }
