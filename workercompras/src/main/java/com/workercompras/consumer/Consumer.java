@@ -24,8 +24,11 @@ public class Consumer {
     private final EmailService emailService;
 
     @RabbitListener(queues = {"${queue.name}"})
-    public void consumer(@Payload @NotNull Message message) throws IOException {
+    public void consumer(@Payload  Message message) throws IOException {
         var pedido = mapper.readValue(message.getBody(), Pedido.class);
-        System.out.println("Mensagem recebid no WorkerCompras: " + pedido);
+       // System.out.println("Mensagem recebid no WorkerCompras: " + pedido);
+        log.info("Pedido recebido: {}", pedido);
+        emailService.notificarCliente(pedido.getEmail());
+         //emailService.notificarCliente("evandeci.purificao@gmail.com");
     }
 }

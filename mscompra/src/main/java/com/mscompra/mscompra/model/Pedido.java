@@ -50,4 +50,7 @@ public class Pedido implements Serializable {
 
     @NotBlank(message = "Campo requerido")
     private String cep;
+
+  @NotBlank(message = "Campo requerido")
+  private String email;
 }
